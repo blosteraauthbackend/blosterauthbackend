@@ -10,7 +10,9 @@ const app = express();
 
 // Middleware
 // shopify-backend/index.js mein update karein:
-
+app.get('/', (req, res) => {
+    res.send('🚀 Blostera Auth Backend is Flying High!');
+});
 
 // 🚀 SECURE BYPASS: Standard CORS allows all local/live dynamic domains safely
 app.use(cors({
