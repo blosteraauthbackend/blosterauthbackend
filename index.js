@@ -34,3 +34,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`🚀 Empire Backend Running on http://localhost:${PORT}`);
 });
+module.exports = app;
