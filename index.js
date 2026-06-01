@@ -14,13 +14,12 @@ app.get('/', (req, res) => {
     res.send('🚀 Blostera Auth Backend is Flying High!');
 });
 
-// 🚀 SECURE BYPASS: Standard CORS allows all local/live dynamic domains safely
 app.use(cors({
-    origin: '*',
+    origin: true, // 🚀 Automatically reflects the requesting domain (e.g. blostera.store)
+    credentials: true, // 🚀 Allows GrapesJS to send cookies/credentials securely
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization,X-Requested-With,X-Internal-Token'
 }));
-
 app.use(express.json());
 
 // 2. URL encoded ki limit bhi barhao (Safe side ke liye)
