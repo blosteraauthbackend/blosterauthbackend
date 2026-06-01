@@ -208,7 +208,7 @@ exports.publishToCloudflare = async (req, res) => {
             var grids = document.querySelectorAll('.blost-dynamic-products-grid');
             if(grids.length === 0 || !window.blostera_website_id) return;
 
-            fetch('http://localhost:5001/api/products/list?website_id=' + window.blostera_website_id)
+            fetch('https://blosteraproductsbackend.vercel.app/api/products/list?website_id=' + window.blostera_website_id)
                 .then(function(res) { return res.json(); })
                 .then(function(data) {
                     if(data.success && data.products.length > 0) {
