@@ -495,16 +495,22 @@ exports.updateSettings = async (req, res) => {
             }
         }
 
-        // 3. Update Database (Including Account Info & Domains)
+       // 🚀 THE FIX: Added "|| ''" and "|| null" so Turso never gets 'undefined' values!
         await userDB.execute({
             sql: `UPDATE users SET 
                   name = ?, phone = ?, website_store_name = ?, domain_name = ?, 
                   custom_domain = ?, logo_url = ?, whatsapp_number = ?, social_links = ? 
                   WHERE website_id = ?`,
             args: [
-                name, phone, website_store_name, newSubdomain, 
-                custom_domain || null, logo_url, whatsapp_number, 
-                JSON.stringify(social_links || {}), website_id
+                name || '', 
+                phone || '', 
+                website_store_name || '', 
+                newSubdomain || '', 
+                custom_domain || null, 
+                logo_url || '', 
+                whatsapp_number || '', 
+                JSON.stringify(social_links || {}), 
+                website_id
             ]
         });
 
